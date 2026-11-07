@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>雋品投資｜投資概況</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#f6f4ef;--card:#fffdf8;--ink:#1d2a2e;--mute:#667579;--line:#dcd8cc;--warn:#fbeed0;--warnink:#6b4a0f;--accent:#1f5f63;
+--c1:#1f5f63;--c2:#9aa5a8;--c3:#c4872b;--c4:#5b8a5a;--c5:#8a4b3c;--c6:#4a6fa5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141c1e;--card:#1c2629;--ink:#eceae2;--mute:#97a5a8;--line:#2f3c3f;--warn:#3a2f14;--warnink:#f0d48c;--accent:#6fc0c4;
+--c1:#4fa5aa;--c2:#7f8c8f;--c3:#e0a548;--c4:#7fb27e;--c5:#c9806f;--c6:#7a9fd4}}
+:root[data-theme="dark"]{--bg:#141c1e;--card:#1c2629;--ink:#eceae2;--mute:#97a5a8;--line:#2f3c3f;--warn:#3a2f14;--warnink:#f0d48c;--accent:#6fc0c4;
+--c1:#4fa5aa;--c2:#7f8c8f;--c3:#e0a548;--c4:#7fb27e;--c5:#c9806f;--c6:#7a9fd4}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+main{max-width:860px;margin:0 auto;padding:32px 20px 64px}
+h1,h2,.big{font-family:"Noto Serif TC","Songti TC",serif}
+h1{font-size:20px;margin:0 0 14px;font-weight:600}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line)}
+.tabs button{font:inherit;font-size:15px;background:none;border:0;border-bottom:3px solid transparent;color:var(--mute);padding:10px 16px;cursor:pointer;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--ink);font-weight:700;border-bottom-color:var(--accent)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.banner{background:var(--warn);color:var(--warnink);border-radius:8px;padding:10px 14px;font-size:14px;margin:18px 0 0}
+.asof{color:var(--mute);font-size:14px;margin:18px 0 0}
+.hero{margin:26px 0 8px}
+.hero .big{font-size:clamp(44px,12vw,84px);font-weight:900;line-height:1.1;letter-spacing:-.02em}
+.hero .big small{font-size:.3em;font-weight:600;margin-right:6px;color:var(--mute)}
+.hero p{margin:6px 0 0;color:var(--mute)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin:26px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats div{padding:14px 0}.stats div+div{padding-left:16px;border-left:1px solid var(--line)}
+.stats b{display:block;font-size:22px;font-weight:700}.stats span{font-size:13px;color:var(--mute)}
+h2{font-size:22px;margin:48px 0 6px;font-weight:600}
+.sub{color:var(--mute);font-size:14px;margin:0 0 18px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.row strong{font-size:17px}.row .rate{font-weight:700;font-size:18px}
+.meta{font-size:13px;color:var(--mute);margin-top:2px}
+.track{height:8px;background:var(--line);border-radius:4px;margin-top:10px;overflow:hidden}
+.fill{height:100%;border-radius:4px;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.note{font-size:12.5px;color:var(--mute);margin-top:8px}
+.reels{display:flex;align-items:flex-start;font-family:"Noto Serif TC","Songti TC",serif;font-weight:900;font-size:34px;line-height:1;height:1em;overflow:hidden;margin:10px 0 2px;color:var(--c3)}
+.reels .cm{width:.3em;text-align:center}
+.reel{display:block;width:.64em;height:1em;overflow:hidden}
+.strip{display:block;will-change:transform}
+.strip b{display:block;height:1em;text-align:center;font-weight:900}
+.chart{display:flex;align-items:flex-end;gap:6px;height:220px;padding-top:10px;border-bottom:1px solid var(--line)}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-width:0}
+.bar{display:flex;flex-direction:column-reverse;width:100%;transition:height 1s cubic-bezier(.2,.7,.2,1)}.bar i{display:block;width:100%}
+.val{font-size:10.5px;text-align:center;color:var(--mute);margin-bottom:3px;white-space:nowrap}
+.labels{display:flex;gap:6px;margin-top:6px}.labels span{flex:1;text-align:center;font-size:12px;color:var(--mute)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:16px;font-size:13px}
+.legend span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:var(--k)}
+.chartwrap{overflow-x:auto}.chartwrap>div{min-width:520px}
+ul.notes{padding-left:18px;color:var(--mute);font-size:14px}
+footer{margin-top:48px;font-size:12.5px;color:var(--mute);border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:reduce){.fill,.bar{transition:none!important}}
+@media (max-width:520px){.stats b{font-size:18px}.stats div+div{padding-left:10px}}
+.dead{border:1px dashed var(--mute);border-radius:10px;padding:14px 16px;margin-top:10px;opacity:.78;background:transparent}.dead strong{font-size:17px;text-decoration:line-through;text-decoration-thickness:1px}.dead .tag{font-size:12px;border:1px solid var(--mute);border-radius:4px;padding:0 6px;margin-left:8px;color:var(--mute);vertical-align:2px}.dead .meta{filter:grayscale(1)}.note a{color:var(--accent);margin-left:6px}
+</style>
+</head>
+<body>
+<main>
+<h1>🦄 雋品投資　投資概況</h1>
+<div class="tabs" role="tablist">
+<button role="tab" id="t-actual" aria-selected="true" data-p="actual">2026 實際</button>
+<button role="tab" id="t-forecast" aria-selected="false" data-p="forecast">2027 預估</button>
+</div>
+
+<section id="actual" class="panel">
+<p class="asof">資料截至 2026 年 10 月（近 12 個月）　單位：新台幣</p>
+<div class="hero"><div class="big"><small>累計現金收入</small>108,426</div><p>來自 4 個已有收入的項目，不含美股</p></div>
+<div class="stats">
+<div><b>255 萬</b><span>投入本金</span></div>
+<div><b>6.0%</b><span>回收率（未年化，不含 5 月新投資）</span></div>
+<div><b>4 / 7</b><span>已有收入的項目</span></div>
+</div>
+<h2>各項目回收狀況</h2>
+<p class="sub">回收率＝累計現金收入 ÷ 投入本金。長條最長代表 25%。</p>
+<div id="actual-items"></div>
+<h2>每月現金收入</h2>
+<p class="sub">依項目堆疊。4、7、10 月牛奶為較大筆收入，其餘月份以旅館、居酒屋與寵物美容的小額收入為主。</p>
+<div class="chartwrap"><div><div class="chart" id="actual-chart"></div><div class="labels" id="actual-labels"></div></div></div>
+<div class="legend" id="actual-legend"></div>
+<h2>閱讀時請留意</h2>
+<ul class="notes">
+<li>本頁數字為「現金收入」，尚未扣除營運成本與費用，不等於損益。</li>
+<li>包租代管本金 100 萬，目前尚無收入。</li>
+<li>回收率為簡單加總，未年化，各項目投入時間不同，不宜直接互相比較。</li>
+<li>美股相關部位不在本頁範圍內。</li>
+<li>桓郎與韓奶奶鍋物為 5 月新投入，尚無收入資料，未計入回收率。</li>
+</ul>
+<h2>呆帳</h2>
+<p class="sub">已確定無法回收的項目，不計入上方本金、收入與回收率。</p>
+<div class="dead"><div class="row"><span><strong>魚塭</strong><span class="tag">呆帳</span></span><span class="rate">💀</span></div>
+<div class="meta">本金 250,000　3 月已拿回 38,500　未回收 211,500</div>
+<div class="note">已列為呆帳，由負責人個人承擔，不影響上方數字。</div></div>
+</section>
+
+<section id="forecast" class="panel" hidden>
+<div class="banner">草稿：以下為假設推算，不是實際數字，也不是獲利保證。</div>
+<div class="hero"><div class="big"><small>預估現金收入</small>327,271</div><p>2026 年實際為 108,426，預估約為今年的 3.0 倍</p></div>
+<div class="stats">
+<div><b>235 萬</b><span>預估本金（旅館已退出）</span></div>
+<div><b>13.9%</b><span>預估回收率</span></div>
+<div><b>16.8%</b><span>排除韓奶奶鍋物後（本金 195 萬）</span></div>
+</div>
+<h2>各項目預估</h2>
+<p class="sub">長條最長代表 30%。往下捲到桓郎時，12 月的入帳金額會像拉霸一樣轉出來。</p>
+<div id="forecast-items"></div>
+<h2>每月預估收入</h2>
+<p class="sub">12 月最高，是桓郎的 105,000；2 月次之，是包租代管的 100,000。</p>
+<div class="chartwrap"><div><div class="chart" id="forecast-chart"></div><div class="labels" id="forecast-labels"></div></div></div>
+<div class="legend" id="forecast-legend"></div>
+<h2>推算假設</h2>
+<ul class="notes">
+<li>旅館於明年退出，收入與本金皆不計。</li>
+<li>包租代管於 2 月進帳 100,000。</li>
+<li>牛奶每季 21,000，排在 1、4、7、10 月。</li>
+<li>居酒屋、寵物美容與今年相同，逐月照搬。</li>
+<li>桓郎以 30 萬計算 35% 收益，12 月入帳；回收率仍以實際投入 35 萬為本金。</li>
+<li>韓奶奶鍋物尚無收入資料，收入以 0 計，但本金仍列入。</li>
+<li>魚塭與美股不在範圍內。</li>
+</ul>
+</section>
+
+<footer>本頁僅供內部參考，不構成任何投資保證或獲利預測。</footer>
+</main>
+<script>
+const fmt=n=>n.toLocaleString("en-US");
+const cfg={
+actual:{max:25,
+items:[
+{n:"旅館",p:200000,t:7155,k:"--c1"},
+{n:"包租代管",p:1000000,t:0,k:"--c2",note:"尚無收入"},
+{n:"牛奶",p:300000,t:63000,k:"--c4",note:"4 月、7 月、10 月各 21,000"},
+{n:"居酒屋",p:200000,t:23059,k:"--c5",note:"高雄・夏の酌居酒屋",map:"https://www.google.com/maps/search/?api=1&query=22.615631%2C120.304687&query_place_id=ChIJsY8FAwAFbjQRxz4MSCOlaT4"},
+{n:"寵物美容",p:100000,t:15212,k:"--c6"},
+{n:"桓郎",p:350000,t:null,k:"--c3",note:"商務空間投資案，5 月投入"},
+{n:"韓奶奶鍋物",p:400000,t:null,k:"--c6",note:"韓式豆腐鍋物品牌整體投資，5 月投入。分店包括八德、中壢中原、平鎮、龍潭等"}],
+months:["11月","12月","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月"],
+d:{"旅館":[773,1679,1391,143,0,592,584,845,682,466,0,0],
+"牛奶":[0,0,0,0,0,21000,0,0,21000,0,0,21000],
+"居酒屋":[0,0,0,1458,3831,1960,11504,171,1134,0,747,2254],
+"寵物美容":[0,0,0,0,0,0,0,0,4960,0,5442,4810]},
+keys:{"旅館":"--c1","牛奶":"--c4","居酒屋":"--c5","寵物美容":"--c6"}},
+forecast:{max:30,
+items:[
+{n:"包租代管",p:1000000,t:100000,k:"--c2",note:"2 月進帳 100,000"},
+{n:"牛奶",p:300000,t:84000,k:"--c4",note:"每季 21,000，全年 4 次"},
+{n:"居酒屋",p:200000,t:23059,k:"--c5",note:"高雄・夏の酌居酒屋，與 2026 年相同",map:"https://www.google.com/maps/search/?api=1&query=22.615631%2C120.304687&query_place_id=ChIJsY8FAwAFbjQRxz4MSCOlaT4"},
+{n:"寵物美容",p:100000,t:15212,k:"--c6",note:"與 2026 年相同"},
+{n:"桓郎（商務空間）",p:350000,t:105000,k:"--c3",note:"以 30 萬 × 35% 計算，12 月入帳",reel:true},
+{n:"韓奶奶鍋物",p:400000,t:null,k:"--c6",note:"尚無收入資料，未計入"}],
+months:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+d:{"包租代管":[0,100000,0,0,0,0,0,0,0,0,0,0],
+"牛奶":[21000,0,0,21000,0,0,21000,0,0,21000,0,0],
+"居酒屋":[0,1458,3831,1960,11504,171,1134,0,747,2254,0,0],
+"寵物美容":[0,0,0,0,0,0,4960,0,5442,4810,0,0],
+"桓郎":[0,0,0,0,0,0,0,0,0,0,0,105000]},
+keys:{"包租代管":"--c2","牛奶":"--c4","居酒屋":"--c5","寵物美容":"--c6","桓郎":"--c3"}}};
+function reel(n){return '<div class="reels" aria-label="'+fmt(n)+'">'+fmt(n).split("").map(c=>/\d/.test(c)?
+'<span class="reel" aria-hidden="true"><span class="strip" data-d="'+c+'" style="transform:translateY(-'+(20+ +c)+'em)">'+
+Array.from({length:30},(_,i)=>"<b>"+i%10+"</b>").join("")+'</span></span>':'<span class="cm">'+c+'</span>').join("")+'</div>'}
+function build(id,c){
+document.getElementById(id+"-items").innerHTML=c.items.map(i=>{
+const r=i.t==null?0:i.t/i.p*100;
+const rate=i.t==null?(id==="actual"?"5 月投入":"—"):r.toFixed(1)+"%";
+const inc=i.t==null?(id==="actual"?"尚無收入資料":"預估收入 0"):(id==="actual"?"累計收入 ":"預估收入 ")+fmt(i.t);
+return '<div class="item"><div class="row"><strong>'+i.n+'</strong><span class="rate">'+rate+'</span></div>'+
+(i.reel?reel(i.t):"")+
+'<div class="meta">本金 '+fmt(i.p)+'　'+(i.reel?"":inc)+'</div>'+
+'<div class="track"><div class="fill" data-w="'+(r/c.max*100)+'" style="width:0;background:var('+i.k+')"></div></div>'+
+(i.note||i.map?'<div class="note">'+(i.note||"")+(i.map?' <a href="'+i.map+'" target="_blank" rel="noopener">📍 在地圖上查看</a>':"")+'</div>':"")+'</div>'}).join("");
+const tot=c.months.map((_,m)=>Object.values(c.d).reduce((s,a)=>s+a[m],0));
+const max=Math.max(...tot);
+document.getElementById(id+"-chart").innerHTML=tot.map((t,m)=>'<div class="col"><div class="val">'+(t>=1000?(t/1000).toFixed(1)+"k":t)+'</div><div class="bar" data-h="'+(t/max*88)+'" style="height:0;transition-delay:'+(m*.06)+'s">'+
+Object.keys(c.d).map(k=>c.d[k][m]?'<i style="height:'+(c.d[k][m]/t*100)+'%;background:var('+c.keys[k]+')"></i>':"").join("")+'</div></div>').join("");
+document.getElementById(id+"-labels").innerHTML=c.months.map(m=>"<span>"+m+"</span>").join("");
+document.getElementById(id+"-legend").innerHTML=Object.keys(c.keys).map(k=>'<span style="--k:var('+c.keys[k]+')">'+k+"</span>").join("");}
+build("actual",cfg.actual);build("forecast",cfg.forecast);
+const rm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function spin(el){el.querySelectorAll(".strip").forEach((s,i)=>{const f="translateY(-"+(20+ +s.dataset.d)+"em)";
+s.style.transition="none";s.style.transform="translateY(0)";if(rm){s.style.transform=f;return}
+void s.offsetHeight;s.style.transition="transform "+(1.2+i*.25)+"s cubic-bezier(.15,.7,.2,1) "+(i*.08)+"s";s.style.transform=f;})}
+try{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)spin(e.target)}),{threshold:.9});
+document.querySelectorAll(".reels").forEach(r=>io.observe(r));}catch(e){}
+function grow(el){el.querySelectorAll(".fill").forEach(f=>f.style.width=f.dataset.w+"%");el.querySelectorAll(".bar").forEach(b=>b.style.height=b.dataset.h+"%");}
+try{const go=new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){grow(e.target);o.unobserve(e.target)}}),{threshold:.3});
+document.querySelectorAll(".track,.chart").forEach(t=>go.observe(t));}catch(e){grow(document)}
+function show(p){if(p!=="actual"&&p!=="forecast")p="actual";
+document.querySelectorAll(".panel").forEach(s=>s.hidden=s.id!==p);
+document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.p===p));}
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{location.hash=b.dataset.p;});
+addEventListener("hashchange",()=>show(location.hash.slice(1)));
+show(location.hash.slice(1));
+</script>
+</body>
+</html>
